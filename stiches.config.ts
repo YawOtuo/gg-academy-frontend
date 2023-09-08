@@ -15,7 +15,10 @@ export const {
     colors: {
       gray400: 'gainsboro',
       gray500: 'lightgray',
+    yellow100:"#e4a95114",
+      yellow900: "#E4A951"
     },
+
   },
   media: {
     bp1: '(min-width: 480px)',

@@ -1,18 +1,31 @@
+"use client"
+
+import { byellow } from "@/assets/colors";
 import Search from "../search";
 import { IoMdNotifications, IoMdPerson } from "react-icons/io";
+import { styled } from "@stitches/react";
+import SideNav from "../sideNav";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-around items-center">
+    <Root className="hidden md:flex justify-between items-center w-full gap-3">
       <h1 className="text-2xl text-brand">Dashboard</h1>
-      <Search />
-      <IoMdNotifications size={50} />
-      <div className="flex items-center">
-        <IoMdPerson size={50}/>
-        Username
-      </div>
-    </div>
+     <div className="flex justify-around gap-10 items-center w-full">
+        <Search />
+        <IoMdNotifications color={ byellow} size={30} />
+        <div className="flex items-center">
+          <IoMdPerson  color={ byellow} size={30}/>
+          Username
+        </div>
+     </div>
+
+    </Root>
   );
 };
 
+const Root = styled('div', {
+  paddingInline:"1rem",
+
+  
+})
 export default Navbar;
