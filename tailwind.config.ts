@@ -12,8 +12,13 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'bg-brandd':'bg-[#E4A951]',
       },
-    },
+
+      color:{
+        'text-brand':"text-[#E4A951]",
+      },
+    } 
   },
   plugins: [],
 }

@@ -1,4 +1,4 @@
-import { styled } from "@stitches/react"
+import { styled } from "../../../stiches.config"
 
 const SideNav = () => {
     return(
