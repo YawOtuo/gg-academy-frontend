@@ -1,6 +1,12 @@
 // components/Layout.js (or Layout.tsx for TypeScript)
+import React, { ReactNode } from 'react';
 
-const Layout = ({ children }) => {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+
+const Layout:React.FC<LayoutProps> = ({ children }) => {
   return (
     <div>
       <main>
