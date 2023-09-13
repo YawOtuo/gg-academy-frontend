@@ -7,7 +7,7 @@ import {AiOutlineSearch} from 'react-icons/ai'
 
 const Search = () => {
     return(
-        <Root className='flex items-center w-full'>
+        <Root className='flex items-center w-full justify-center'>
             <SearchInput type="text" className='w-full'  />
             <div className='search-b flex items-center'>
                 <AiOutlineSearch color={byellow}/>
@@ -18,7 +18,7 @@ const Search = () => {
 
 const Root = styled('div', {
 
-
+    maxWidth:"800px",
     "& .search-b":{
         transform : "translateX(-130%)",
     }

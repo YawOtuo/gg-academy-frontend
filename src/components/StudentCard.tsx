@@ -37,7 +37,7 @@ const StudentCard = ({ name, picture }: Props) => {
 
 const Root = styled("div", {
   minHeight: "50px",
-  minWidth: "100px",
+  minWidth: "250px",
   aspectRatio: "100/50",
   borderRadius: "8px",
   boxShadow: "0px 1px 1px 0px #E4A951",

@@ -11,9 +11,7 @@ const Layout:React.FC<LayoutProps> = ({ children }) => {
     <div>
       <main>
 
-        <div>
-          Layout working
-        </div>
+       
         <div>
             {children}
         </div>

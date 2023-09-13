@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { students } from "./api";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -13,7 +14,9 @@ export default function Home() {
       <Navbar />
 
       <div className="flex flex-wrap pt-5 gap-5 mt-5 px-5">
-        <CountCard title="Students" count={40} />
+        <Link href={"/students"} className="w-full max-w-[300px]">
+          <CountCard title="Students" count={40} />
+        </Link>
         <CountCard title="Teachers" count={40} />
       </div>
       <div className="py-5 mt-10 px-5">

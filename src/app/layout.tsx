@@ -28,22 +28,20 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="flex h-full max-w-[1728px] overflow-hidden ">
-          <div>
+          <div
+            className={`${
+              display ? "" : "hidden"
+            } md:flex md:w-1/5 flex-col h-screen`}>
             <button
               className="absolute top-1 left-1 md:hidden z-[500]"
               onClick={(e) => setDisplay(!display)}>
-              <GiHamburgerMenu
-                size={40}
-                color={byellow}
-              />
+              <GiHamburgerMenu size={40} color={byellow} />
             </button>
-            <div
-              className={`${
-                display ? "" : "hidden"
-              } md:flex md:w-1/5 h-screen`}>
+            <div className="w-full">
               <SideNav />
             </div>
           </div>
+
           <div className=" w-full md:w-4/5">{children}</div>
         </div>
       </body>

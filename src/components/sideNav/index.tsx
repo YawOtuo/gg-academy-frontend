@@ -7,34 +7,29 @@ import { MdOutlineAccountCircle } from "react-icons/md";
 import { IoMdNotifications } from "react-icons/io";
 import { byellow } from "@/assets/colors";
 import { useState } from "react";
+import Link from "next/link";
 
 const SideNav = () => {
   return (
     <Root className={`flex flex-col  gap-4 h-full`}>
       <GText>
-        GENIE GEM
+       <Link href="/"> GENIE GEM</Link>
         
       </GText>
       <div className="gap-6 flex flex-col">
-        <NavItem>
-          <BiWorld color={byellow} />
-          Dashboard
-        </NavItem>
-        <NavItem>
-          <PiStudentBold color={byellow} /> Students
-        </NavItem>
-        <NavItem>
+          <Link href={'/'}  >
+            <NavItem>
+              <BiWorld color={byellow} />
+              Dashboard
+            </NavItem>
+          </Link>
+         <Link href={'/students'}> <NavItem><PiStudentBold color={byellow} /> Students</NavItem></Link>
           {" "}
-          <GiTeacher color={byellow} /> Teachers
-        </NavItem>
-        <NavItem>
+         <Link href={'/'} > <NavItem><GiTeacher color={byellow} /> Teachers</NavItem></Link>
           {" "}
-          <MdOutlineAccountCircle color={byellow} /> Account
-        </NavItem>
-        <NavItem>
+          <Link href={'/'} ><NavItem><MdOutlineAccountCircle color={byellow} /> Account</NavItem></Link>
           {" "}
-          <IoMdNotifications color={byellow} /> Notifications
-        </NavItem>
+          <Link href={'/'} ><NavItem><IoMdNotifications color={byellow} /> Notifications</NavItem></Link>
       </div>
     </Root>
   );
@@ -57,15 +52,22 @@ const Root = styled("div", {
   },
 });
 
-const NavItem = styled("div", {
+const NavItem = styled("button", {
   minHeight: "40px",
   maxHeight: "50px",
   display: "flex",
   alignItems: "center",
   gap: "5px",
+  width:"100%",
+
+
+  "&:hover":{
+    backgroundColor:"$yellow100",
+    borderRight:"3px solid $yellow900"
+  }
 });
 
-const GText = styled("h1", {
+const GText = styled("button", {
   color: "$yellow900",
   fontWeight: "600",
   fontSize: "2rem",
