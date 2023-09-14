@@ -41,6 +41,7 @@ const Root = styled("div", {
   paddingInline: "1rem",
   backgroundColor: "$yellow100",
   paddingBlock: "2rem",
+  height:"100vw",
 
   "@media screen and (max-width:768px)": {
     // display:"none",
