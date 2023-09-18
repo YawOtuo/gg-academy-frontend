@@ -1,26 +1,38 @@
+"use client";
 import StudentCard from "@/components/StudentCard";
 import Search from "@/components/search";
 import StudentListCard from "@/components/studentListCard";
 import Button from "@/ui/button";
 import { styled } from "@stitches/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import { fetchStudents } from "./api";
+import { useQuery } from "react-query";
+import axios from "axios";
+import { useAllStudents } from "@/lib/hooks/student.hook";
+import Pagination from "./components/pagination";
 
 const Page = () => {
+  const { data: students } = useAllStudents();
+
   return (
-    <Root className="py-20 flex flex-col justify-center items-center">
+    <Root className="py-10 flex flex-col justify-center items-center">
       <div className="flex gap-5 items-center">
         <Search />
-        <Button className="flex gap-3 items-center ">
-          <AiOutlinePlusCircle size="30" color="#E4A951"/>
+        <Button className="flex gap-3 items-center max-h-[45px]">
+          <AiOutlinePlusCircle size="30" color="white" />
           New
         </Button>
       </div>
+      <div className="w-full flex justify-center">
+        <Pagination />
+      </div>
       <div className="gap-3 w-full px-5 flex flex-wrap items-center justify-center mt-10">
-        {Array.from({ length: 15 }).map((r, index) => (
-          <Link key={index} className="" href={`/students/${index}`}>
+        {students?.data.map((r, index) => (
+          <Link key={index} className="" href={`/students/${r?.id}`}>
             {" "}
-            <StudentListCard name="Kojo" />
+            <StudentListCard name={r?.name} index={r?.id} />
           </Link>
         ))}
       </div>

@@ -1,5 +1,7 @@
+import { useStudentById } from "@/lib/hooks/student.hook";
 import OptimizedImage from "@/ui/OptimizedImage";
 import Button from "@/ui/button";
+import { useParams } from "next/navigation";
 import { BsArrowRightCircle, BsArrowRightCircleFill } from "react-icons/bs";
 
 const Info = ({ data, value }) => {
@@ -11,6 +13,8 @@ const Info = ({ data, value }) => {
 };
 
 const MainDetails = () => {
+  const params = useParams();
+  const { data: student } = useStudentById(params?.id);
   return (
     <div className="flex flex-col items-center justify-center shadow-md relative">
       <div className="w-full h-full max-w-[200px] aspect-square rounded-full">
@@ -32,13 +36,11 @@ const MainDetails = () => {
       <div className="flex flex-col py-5 gap-16 ">
         <Button>Edit Details</Button>
         <p>
-          <Info data={"name"} value={"Edson Alvarez"} />
-          <Info data={"name"} value={"Edson Alvarez"} />
-          <Info data={"name"} value={"Edson Alvarez"} />
-          <Info data={"name"} value={"Edson Alvarez"} />
-          <Info data={"name"} value={"Edson Alvarez"} />
-          <Info data={"name"} value={"Edson Alvarez"} />
-          <Info data={"name"} value={"Edson Alvarez"} />
+          <Info data={"name"} value={student?.data.name} />
+          <Info data={"Email"} value={student?.data.email} />
+          <Info data={"Age"} value={student?.data.age} />
+          <Info data={"Date Of Birth"} value={student?.data.dateOfBirth} />
+
 
           <button className="absolute right-[-20px] z-10 bottom-16">
             <BsArrowRightCircle color="#E4A951" size="50" />

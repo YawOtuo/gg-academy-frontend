@@ -9,6 +9,7 @@ import "swiper/css/bundle";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { byellow } from "@/assets/colors";
+import Providers from "@/utils/provider";
 // import { useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,26 +28,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex h-full max-w-[1728px] overflow-hidden ">
-          <div
-            className={`${
-              display ? "" : "hidden"
-            } md:flex md:w-1/5 flex-col h-screen`}>
+      <Providers>
+          <div className="flex min-h-screen max-w-[1728px]  ">
             <button
               className="absolute top-1 left-1 md:hidden z-[500]"
               onClick={(e) => setDisplay(!display)}>
               <GiHamburgerMenu size={40} color={byellow} />
             </button>
-            <div className="w-full">
-              <SideNav />
+            <div
+              className={`${
+                display ? "w-full min-w-[300px] " : "w-0 hidden"
+              } md:flex md:w-1/5 flex-col ease-in-out
+              duration-1000 transition-[width]`}>
+                <SideNav />
             </div>
+  
+            <div className=" w-full md:w-4/5">
+              {children}
+              </div>
           </div>
-
-          <div className=" w-full md:w-4/5">{children}</div>
-        </div>
+      </Providers>
       </body>
     </html>
   );
 }
-
-

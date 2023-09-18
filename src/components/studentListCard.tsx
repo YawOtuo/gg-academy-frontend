@@ -18,7 +18,7 @@ const StudentListCard = ({ name }) => {
 const Root = styled("div", {
   minHeight: "52px",
   width: "100%",
-  minWidth:"500px",
+  minWidth:"400px",
   maxWidth:"600px",
   backgroundColor: "$yellow100",
 
