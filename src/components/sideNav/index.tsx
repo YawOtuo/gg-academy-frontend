@@ -9,14 +9,14 @@ import { byellow } from "@/assets/colors";
 import { useState } from "react";
 import Link from "next/link";
 
-const SideNav = () => {
+const SideNav = (props) => {
   return (
-    <Root className={`flex flex-col  gap-4 h-full`}>
+    <Root className={`flex flex-col items-center gap-4 h-full  ${props.display ? " md:flex flex-col w-[300px] "  : " w-0 md:min-w-[300px]"} ease-in-out  duration-[1000ms] transition-[width]  h-full z-[99]`}>
       <GText>
        <Link href="/"> GENIE GEM</Link>
         
       </GText>
-      <div className="gap-6 flex flex-col">
+      <div className="gap-6 flex flex-col max-w-[90%]">
           <Link href={'/'}  >
             <NavItem>
               <BiWorld color={byellow} />
@@ -43,15 +43,16 @@ const Root = styled("div", {
   paddingBlock: "2rem",
   minHeight:"100vh",
   height:"100%",
-
+  overflow:"hidden",
+  
 
   "@media screen and (max-width:768px)": {
     // display:"none",
-    width: "100%",
-    position: "relative",
+
+    paddingInline:"0rem",
     justifyContent: "start",
-    minWidth: "300px",
-    transition:"ease-in-out",
+    // transition:"ease-in-out",
+    zIndex:"999",
   },
 });
 

@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 import { Inter } from "next/font/google";
 import "swiper/css/bundle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { byellow } from "@/assets/colors";
 import Providers from "@/utils/provider";
@@ -25,29 +25,29 @@ export default function RootLayout({
 }) {
   const [display, setDisplay] = useState(false);
 
+  useEffect(()=>{
+    if(window.screen.width > 768){
+      setDisplay(true)
+    }
+  },[window.screen.width])
+
   return (
     <html lang="en">
       <body className={inter.className}>
-      <Providers>
-          <div className="flex min-h-screen max-w-[1728px]  ">
+        <Providers>
+          <div className="flex min-h-screen max-w-[1728px] overflow-hidden ">
             <button
               className="absolute top-1 left-1 md:hidden z-[500]"
               onClick={(e) => setDisplay(!display)}>
               <GiHamburgerMenu size={40} color={byellow} />
             </button>
-            <div
-              className={`${
-                display ? "w-full min-w-[300px] " : "w-0 hidden"
-              } md:flex md:w-1/5 flex-col ease-in-out
-              duration-1000 transition-[width]`}>
-                <SideNav />
+            <div className="w-full max-w-[300px]">
+              <SideNav display={display} />
             </div>
-  
-            <div className=" w-full md:w-4/5">
-              {children}
-              </div>
+
+            <div className=" w-full md:w-4/5">{children}</div>
           </div>
-      </Providers>
+        </Providers>
       </body>
     </html>
   );
