@@ -28,9 +28,9 @@ const Page = () => {
       <div className="w-full flex justify-center">
         <Pagination />
       </div>
-      <div className="gap-3 w-full px-5 flex flex-wrap items-center justify-center mt-10">
+      <div className="gap-3 w-full px-5 flex flex-col items-center justify-center mt-10">
         {students?.data.map((r, index) => (
-          <Link key={index} className="" href={`/students/${r?.id}`}>
+          <Link key={index} className="w-full" href={`/students/${r?.id}`}>
             {" "}
             <StudentListCard name={r?.name} index={r?.id} />
           </Link>

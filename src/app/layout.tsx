@@ -45,7 +45,7 @@ export default function RootLayout({
               <SideNav display={display} />
             </div>
 
-            <div className=" w-full md:w-4/5">{children}</div>
+            <div className=" md:w-4/5">{children}</div>
           </div>
         </Providers>
       </body>
