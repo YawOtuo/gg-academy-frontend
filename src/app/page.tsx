@@ -33,7 +33,7 @@ export default function Home() {
           }}> */}
           {students.map((r, index) => (
             // <SwiperSlide key={index}>
-              <StudentCard name={r["name"]} picture={r["picture"]} />
+              <StudentCard key={index} name={r["name"]} picture={r["picture"]} />
             // </SwiperSlide>
           ))}
         {/* </Swiper> */}
