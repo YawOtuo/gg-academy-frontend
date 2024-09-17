@@ -13,8 +13,8 @@ export default function Home() {
     <div className="w-full py-5">
       <Navbar />
 
-      <div className="flex flex-wrap pt-5 gap-5 mt-5 px-5">
-        <Link href={"/students"} className="w-full max-w-[300px]">
+      <div className="w-full flex flex-col md:flex-row flex-wrap pt-5 gap-5 mt-5 px-5 items-start">
+        <Link href={"/students"} className="w-full" >
           <CountCard title="Students" count={40} />
         </Link>
         <CountCard title="Teachers" count={40} />

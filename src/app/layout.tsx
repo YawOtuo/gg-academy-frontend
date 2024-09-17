@@ -2,13 +2,12 @@ import SideNav from "@/components/sideNav";
 import "./globals.css";
 import type { Metadata } from "next";
 
-import { Inter } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "swiper/css/bundle";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { byellow } from "@/assets/colors";
-import Providers from "@/utils/provider";
+import Providers from "@/lib/utils/provider";
 // import { useState } from "react";
-const inter = Inter({ subsets: ["latin"] });
+const inter = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "GenieGem",
@@ -23,8 +22,8 @@ export const metadata: Metadata = {
     },
   ],
   icons: [
-    { rel: "apple-touch-icon", url: "icon512_rounded.png" },
-    { rel: "icon", url: "icon512_rounded.png" },
+    { rel: "apple-touch-icon", url: "/icon512_rounded.png" },
+    { rel: "icon", url: "/icon512_rounded.png" },
   ],
 };
 export default function RootLayout({
@@ -38,10 +37,10 @@ export default function RootLayout({
         <Providers>
           <div className="flex min-h-screen max-w-[1728px] overflow-hidden ">
             <button className="absolute top-1 left-1 md:hidden z-[500]">
-              <GiHamburgerMenu size={40} color={byellow} />
+              <GiHamburgerMenu size={40} className="text-primary" />
             </button>
-            <div className="w-full max-w-[300px]">
-              {/* <SideNav display={display} /> */}
+            <div className="w-full max-w-[300px] hidden lg:block">
+              <SideNav />
             </div>
 
             <div className=" md:w-4/5">{children}</div>

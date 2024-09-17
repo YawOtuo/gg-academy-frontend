@@ -1,33 +1,23 @@
 "use client";
 
-import { styled } from "@stitches/react";
 import { PiStudentBold } from "react-icons/pi";
 
-const StudentListCard = ({ name }) => {
+type Props = {
+  name: string
+}
+const StudentListCard = ({ name }:  Props) => {
   return (
-    <Root className="my-1 p-3 px-6 flex justify-start items-center
-    lg:min-w-[400px] ">
+    <div  className="my-1 p-3 px-6 flex justify-start items-center
+     hover:bg-secondary border-[1px] rounded-md">
       <div className="flex gap-5 w-full items-center">
         <PiStudentBold size="20" />
 
         <div className="w-full">{name}</div>
       </div>
-    </Root>
+    </div>
   );
 };
 
-const Root = styled("div", {
-  minHeight: "52px",
-  width: "100%",
-  // minWidth:"400px",
-  maxWidth:"600px",
-  backgroundColor: "$yellow100",
 
-  "&:hover":{
-    backgroundColor: "grey",
-    color:"white",
-    scale:"1.02",
-  }
-});
 
 export default StudentListCard;

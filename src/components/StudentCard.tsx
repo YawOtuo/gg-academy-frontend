@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import { styled } from "../../stiches.config";
-import OptimizedImage from "@/ui/OptimizedImage";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 import { BsArrowRight } from "react-icons/bs";
-import { byellow } from "@/assets/colors";
+import { motion } from "framer-motion";
 
 type Props = {
   name: string;
@@ -13,27 +13,24 @@ type Props = {
 
 const StudentCard = ({ name, picture }: Props) => {
   return (
-    <div className="flex items-center gap-10 shadow-sm border-2 rounded-lg">
+    <motion.div
+      layout
+      className="flex items-center gap-5 shadow-sm border-2 rounded-lg w-full">
       <OptimizedImage
         src={picture}
-        css={{
-          maxWidth: "300px",
-          width: "100%",
-          aspectRatio: "500/700",
-        }}
+        className="aspect-[4/3] w-full h-full"
         variant="cover"
         alt="Student image"
       />
-      <div className="items-start gap-5 flex flex-col justify-between w-full h-full py-5 capitalize">
-        <div className="text-xl "> {name}</div>
+      <div className="items-start gap-5 flex flex-col justify-between w-full h-full capitalize">
+        <div className="text-base "> {name}</div>
         <div className="text-xs flex items-center gap-5">
           View Profile
-          <BsArrowRight color={byellow} size={50} />
+          <BsArrowRight className="text-primary" size={50} />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
-
 
 export default StudentCard;

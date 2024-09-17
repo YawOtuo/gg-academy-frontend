@@ -1,5 +1,5 @@
 "use client";
-import OptimizedImage from "@/ui/OptimizedImage";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 import Button from "@/ui/button";
 import { styled } from "@stitches/react";
 import MainDetails from "../components/mainDetails";

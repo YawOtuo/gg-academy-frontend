@@ -1,8 +1,8 @@
 import { useStudentById } from "@/lib/hooks/student.hook";
-import OptimizedImage from "@/ui/OptimizedImage";
-import Button from "@/ui/button";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 import { useParams } from "next/navigation";
 import { BsArrowRightCircle, BsArrowRightCircleFill } from "react-icons/bs";
+import { Button } from "@/components/ui/button";
 
 const Info = ({ data, value }) => {
   return (
