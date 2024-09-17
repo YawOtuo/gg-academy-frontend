@@ -1,34 +1,17 @@
-"use client"
+"use client";
 
-import { byellow } from '@/assets/colors'
-import { styled } from '@stitches/react'
-import {AiOutlineSearch} from 'react-icons/ai'
-
+import { AiOutlineSearch } from "react-icons/ai";
+import { Input } from "../ui/input";
 
 const Search = () => {
-    return(
-        <Root className='flex items-center w-full justify-center'>
-            <SearchInput type="text" className='w-full'  />
-            <div className='search-b flex items-center'>
-                <AiOutlineSearch color={byellow}/>
-            </div>
-        </Root>
-    )
-}
+  return (
+    <div className="flex relative items-center w-full justify-center">
+      <Input type="text" className="w-full" />
+      <div className="absolute right-[10px] flex items-center">
+        <AiOutlineSearch className="text-primary text-xl" />
+      </div>
+    </div>
+  );
+};
 
-const Root = styled('div', {
-
-    maxWidth:"800px",
-    "& .search-b":{
-        transform : "translateX(-130%)",
-    }
-})
-
-const SearchInput = styled('input', {
-    border:"1px solid $yellow900",
-    minHeight:"40px",
-
-
-})
-
-export default Search
+export default Search;

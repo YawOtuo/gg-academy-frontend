@@ -8,7 +8,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { fetchStudents } from "./api";
-import { useQuery } from "react-query";
 import axios from "axios";
 import { useAllStudents } from "@/lib/hooks/student.hook";
 import Pagination from "./components/pagination";
@@ -18,7 +17,7 @@ const Page = () => {
 
   return (
     <Root className="py-10 flex flex-col justify-center items-center">
-      <div className="flex gap-5 items-center">
+      <div className="flex gap-5 items-center w-full">
         <Search />
         <Button className="flex gap-3 items-center max-h-[45px]">
           <AiOutlinePlusCircle size="30" color="white" />

@@ -13,7 +13,7 @@ type Props = {
 
 const StudentCard = ({ name, picture }: Props) => {
   return (
-    <Root className="flex items-center gap-10">
+    <div className="flex items-center gap-10 shadow-sm border-2 rounded-lg">
       <OptimizedImage
         src={picture}
         css={{
@@ -24,22 +24,16 @@ const StudentCard = ({ name, picture }: Props) => {
         variant="cover"
         alt="Student image"
       />
-      <div className="items-start gap-5 flex flex-col justify-center w-full">
-        {name}
-        <div className="text-xs">View Profile
-
-            <BsArrowRight color={byellow} size={50}/>
+      <div className="items-start gap-5 flex flex-col justify-between w-full h-full py-5 capitalize">
+        <div className="text-xl "> {name}</div>
+        <div className="text-xs flex items-center gap-5">
+          View Profile
+          <BsArrowRight color={byellow} size={50} />
         </div>
       </div>
-    </Root>
+    </div>
   );
 };
 
-const Root = styled("div", {
-  minHeight: "50px",
-  minWidth: "250px",
-  aspectRatio: "100/50",
-  borderRadius: "8px",
-  boxShadow: "0px 1px 1px 0px #E4A951",
-});
+
 export default StudentCard;
