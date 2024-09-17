@@ -18,7 +18,7 @@ const StudentCard = ({ name, picture }: Props) => {
       className="flex items-center gap-5 shadow-sm border-2 rounded-lg w-full">
       <OptimizedImage
         src={picture}
-        className="aspect-[4/3] w-full h-full"
+        className="aspect-[4/3] w-full h-full "
         variant="cover"
         alt="Student image"
       />

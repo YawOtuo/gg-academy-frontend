@@ -14,13 +14,13 @@ export default function Home() {
       <Navbar />
 
       <div className="w-full flex flex-col md:flex-row flex-wrap pt-5 gap-5 mt-5 px-5 items-start">
-        <Link href={"/students"} className="w-full" >
+        <Link href={"/students"} className="w-full md:w-fit" >
           <CountCard title="Students" count={40} />
         </Link>
         <CountCard title="Teachers" count={40} />
       </div>
-      <div className="py-5 mt-10 px-5">
-        <Swiper
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 py-5 mt-10 px-5">
+        {/* <Swiper
           modules={[Navigation]}
           spaceBetween={30}
           breakpoints={{
@@ -30,13 +30,13 @@ export default function Home() {
             1024: {
               slidesPerView: 3,
             },
-          }}>
+          }}> */}
           {students.map((r, index) => (
-            <SwiperSlide key={index}>
+            // <SwiperSlide key={index}>
               <StudentCard name={r["name"]} picture={r["picture"]} />
-            </SwiperSlide>
+            // </SwiperSlide>
           ))}
-        </Swiper>
+        {/* </Swiper> */}
       </div>
     </div>
   );
