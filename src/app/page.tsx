@@ -6,10 +6,10 @@ import Navbar from "@/components/navbar";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";
-import useStudents from "@/lib/hooks/student";
+
+import RecentlyRegisteredStudents from "./components/RecentlyRegisteredStudents";
 
 export default function Home() {
-  const { students } = useStudents();
   return (
     <div className="w-full py-5">
       <Navbar />
@@ -20,25 +20,7 @@ export default function Home() {
         </Link>
         <CountCard title="Teachers" count={40} />
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 py-5 mt-10 px-5">
-        {/* <Swiper
-          modules={[Navigation]}
-          spaceBetween={30}
-          breakpoints={{
-            768: {
-              slidesPerView: 1,
-            },
-            1024: {
-              slidesPerView: 3,
-            },
-          }}> */}
-        {students?.map((r, index) => (
-          // <SwiperSlide key={index}>
-          <StudentCard key={index} student={r} />
-          // </SwiperSlide>
-        ))}
-        {/* </Swiper> */}
-      </div>
+      <RecentlyRegisteredStudents />
     </div>
   );
 }

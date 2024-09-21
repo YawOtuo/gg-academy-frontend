@@ -47,6 +47,7 @@ export default function RootLayout({
 
             <div className=" w-full lg:w-4/5">{children}</div>
             {/* <LoadingIndicator /> */}
+
             <Toaster />
           </div>
         </Providers>
