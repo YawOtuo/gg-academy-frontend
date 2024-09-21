@@ -46,7 +46,7 @@ export default function RootLayout({
             </div>
 
             <div className=" w-full lg:w-4/5">{children}</div>
-            <LoadingIndicator />
+            {/* <LoadingIndicator /> */}
             <Toaster />
           </div>
         </Providers>
