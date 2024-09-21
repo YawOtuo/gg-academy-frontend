@@ -26,7 +26,7 @@ const tabs = [
 const Page = () => {
   return (
     <div className="px-5 ">
-      <div className="flex flex-col gap-10 mb-10 mt-5  items-start justify-center p-5  ">
+      <div className="flex flex-col gap-10 mb-10 mt-5  items-start justify-center py-5  ">
         <div className="w-full">
           <MainDetails />
 
