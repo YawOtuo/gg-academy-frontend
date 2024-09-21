@@ -4,12 +4,8 @@ import Search from "@/components/search";
 import StudentListCard from "@/components/StudentListCard";
 import { styled } from "@stitches/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { AiOutlinePlusCircle } from "react-icons/ai";
-import Pagination from "../home/components/filternav";
-import FilterNav from "../home/components/filternav";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+
+import FilterNav from "../components/filternav";
 import useStudents from "@/lib/hooks/student";
 import FetchingState from "@/components/FetchingState";
 import SkeletonStudentListCard from "@/components/StudentListCard/SkeleteonStudentListCard";
