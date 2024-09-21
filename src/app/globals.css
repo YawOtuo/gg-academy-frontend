@@ -44,6 +44,7 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -76,7 +77,44 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer base {
+  h1 {
+    @apply max-w-3xl text-3xl font-bold sm:text-5xl;
+  }
+
+  h2 {
+    @apply max-w-3xl text-2xl font-[600] leading-[2.2rem] sm:text-[1.763rem];
+  }
+
+  h3 {
+    @apply max-w-3xl text-[1.3rem] font-[600] leading-[1.75rem];
+  }
+
+  h4 {
+    @apply max-w-3xl text-lg font-[600];
+  }
+
+  h5 {
+    @apply max-w-3xl text-base font-[600];
+  }
+
+  h6 {
+    @apply max-w-3xl text-sm font-[600];
+  }
+
+  p {
+    @apply max-w-3xl text-base sm:text-lg;
+  }
+
+  small {
+    @apply block max-w-3xl text-sm;
+  }
+
+
 }

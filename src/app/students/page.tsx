@@ -1,45 +1,42 @@
 "use client";
 import StudentCard from "@/components/StudentCard";
 import Search from "@/components/search";
-import StudentListCard from "@/components/studentListCard";
+import StudentListCard from "@/components/StudentListCard";
 import { styled } from "@stitches/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import { fetchStudents } from "../../lib/api/students";
-import axios from "axios";
-import { useAllStudents } from "@/lib/hooks/student.hook";
-import Pagination from "./components/filternav";
-import FilterNav from "./components/filternav";
+import Pagination from "../home/components/filternav";
+import FilterNav from "../home/components/filternav";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import useStudents from "@/lib/hooks/student";
+import FetchingState from "@/components/FetchingState";
+import SkeletonStudentListCard from "@/components/StudentListCard/SkeleteonStudentListCard";
 
 const Page = () => {
-  const { data: students } = useAllStudents();
+  const { students, studentsLoading, studentsError } = useStudents();
 
   return (
-    <div className="py-10 flex flex-col justify-center items-center px-5">
-      <div className="flex flex-col gap-5  items-start  w-full">
-        <div className="max-w-[700px] w-full">
-          {" "}
-          <Search />
-        </div>
-
-      </div>
+    <div className="py-10 flex flex-col justify-center items-center px-5 gap-5">
+   
       <div className="w-full flex justify-center">
         <FilterNav />
       </div>
-      <motion.div layout className="gap-3 w-full px-5 flex flex-col items-center justify-center mt-10">
-        {students?.data.map((r, index) => (
+      <FetchingState className="flex flex-col gap-2"
+        success={students?.map((r, index) => (
           <Link key={index} className="w-full" href={`/students/${r?.id}`}>
             {" "}
-            <StudentListCard name={r?.name} index={r?.id} />
+            <StudentListCard student={r} />
           </Link>
         ))}
-      </motion.div>
+        loading={<SkeletonStudentListCard />}
+        skeletonCount={10}
+        isLoading={studentsLoading}
+        isError={studentsError}
+      />
     </div>
   );
 };
-
 
 export default Page;

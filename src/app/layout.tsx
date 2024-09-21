@@ -6,6 +6,8 @@ import { Open_Sans } from "next/font/google";
 import "swiper/css/bundle";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Providers from "@/lib/utils/provider";
+import LoadingIndicator from "@/components/LoadingIndicator";
+import { Toaster } from "@/components/ui/toaster";
 // import { useState } from "react";
 const inter = Open_Sans({ subsets: ["latin"] });
 
@@ -43,7 +45,9 @@ export default function RootLayout({
               <SideNav />
             </div>
 
-            <div className=" md:w-4/5">{children}</div>
+            <div className=" w-full lg:w-4/5">{children}</div>
+            <LoadingIndicator />
+            <Toaster />
           </div>
         </Providers>
       </body>

@@ -5,16 +5,17 @@ import CountCard from "@/components/countCard";
 import Navbar from "@/components/navbar";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { students } from "./api";
 import Link from "next/link";
+import useStudents from "@/lib/hooks/student";
 
 export default function Home() {
+  const { students } = useStudents();
   return (
     <div className="w-full py-5">
       <Navbar />
 
       <div className="w-full flex flex-col md:flex-row flex-wrap pt-5 gap-5 mt-5 px-5 items-start">
-        <Link href={"/students"} className="w-full md:w-fit" >
+        <Link href={"/students"} className="w-full md:w-fit">
           <CountCard title="Students" count={40} />
         </Link>
         <CountCard title="Teachers" count={40} />
@@ -31,11 +32,11 @@ export default function Home() {
               slidesPerView: 3,
             },
           }}> */}
-          {students.map((r, index) => (
-            // <SwiperSlide key={index}>
-              <StudentCard key={index} name={r["name"]} picture={r["picture"]} />
-            // </SwiperSlide>
-          ))}
+        {students?.map((r, index) => (
+          // <SwiperSlide key={index}>
+          <StudentCard key={index} student={r} />
+          // </SwiperSlide>
+        ))}
         {/* </Swiper> */}
       </div>
     </div>
