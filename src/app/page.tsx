@@ -8,13 +8,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";
 
 import RecentlyRegisteredStudents from "./components/RecentlyRegisteredStudents";
+import Welcome from "./components/Welcome";
 
 export default function Home() {
   return (
-    <div className="w-full py-5">
+    <div className="w-full py-5 px-5">
       <Navbar />
 
-      <div className="w-full flex flex-col md:flex-row flex-wrap pt-5 gap-5 mt-5 px-5 items-start">
+      <Welcome />
+
+      <div className="w-full flex flex-col md:flex-row flex-wrap pt-5 gap-5 mt-5  items-start">
         <Link href={"/students"} className="w-full md:w-fit">
           <CountCard title="Students" count={40} />
         </Link>

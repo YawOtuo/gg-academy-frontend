@@ -7,7 +7,7 @@ function RecentlyRegisteredStudents() {
   const { students, studentsLoading } = useStudents();
 
   return (
-    <div className="flex flex-col gap-5 px-5 mt-10 py-5">
+    <div className="flex flex-col gap-5 mt-10 py-5">
       <h4>Recently Registered Students</h4>
       <FetchingState
         className="w-full grid grid-cols-1 lg:grid-cols-3 gap-5  "

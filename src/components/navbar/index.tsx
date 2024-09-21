@@ -11,7 +11,7 @@ const Navbar = () => {
       {/* <h1 className="text-lg text-brand">Dashboard</h1> */}
      <div className="flex justify-around gap-10 items-center w-full">
         <Search />
-        <IoMdNotifications className="text-primary" size={30} />
+        {/* <IoMdNotifications className="text-primary" size={30} /> */}
         <div className="flex items-center">
           <IoMdPerson className="text-primary" size={30}/>
           Username
