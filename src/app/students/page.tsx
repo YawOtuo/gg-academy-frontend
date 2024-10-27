@@ -19,7 +19,7 @@ const Page = () => {
       <div className="w-full flex justify-center">
         <FilterNav />
       </div>
-      <FetchingState className="flex flex-col gap-2"
+      <FetchingState className="grid grid-cols-1 lg:grid-cols-3 gap-5"
         success={students?.map((r, index) => (
           <Link key={index} className="w-full" href={`/students/${r?.id}`}>
             {" "}

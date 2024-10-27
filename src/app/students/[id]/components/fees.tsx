@@ -13,7 +13,7 @@ type Props = {
 export default function Fees({ id }: Props) {
   const { data, isLoading, isError } = useGetFeeByStudent(id);
   return (
-    <div className="flex flex-col px-5 py-10 gap-10 items-start">
+    <div className="flex flex-col gap-5 lg:gap-10 items-start">
       <AddFeePaymentModal id={id} />
       <FetchingState
         className="w-full grid grid-cols-1 lg:grid-cols-3 gap-5  "

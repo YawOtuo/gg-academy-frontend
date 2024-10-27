@@ -4,13 +4,14 @@ import Details from "./components/details";
 
 import CustomTabs from "@/components/ui/CustomTabs";
 import Fees from "./components/fees";
+import BackButton from "@/components/ui/BackButton";
 
-type Props ={
+type Props = {
   params: {
-    id: number
-  }
-}
-const Page = ({params} : Props) => {
+    id: number;
+  };
+};
+const Page = ({ params }: Props) => {
   const tabs = [
     {
       value: "Details",
@@ -29,8 +30,9 @@ const Page = ({params} : Props) => {
     // },
   ];
   return (
-    <div className="px-5 ">
-      <div className="flex flex-col gap-10 mb-10 mt-5  items-start justify-center py-5  ">
+    <div className="">
+      <BackButton />
+      <div className="flex flex-col gap-5 mb-10 m items-start justify-center py-5  ">
         <div className="w-full">
           <MainDetails />
         </div>

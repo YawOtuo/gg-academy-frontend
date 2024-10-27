@@ -10,7 +10,8 @@ import { Toaster } from "@/components/ui/toaster";
 // import { useState } from "react";
 const inter = Open_Sans({ subsets: ["latin"] });
 import NextTopLoader from "nextjs-toploader";
-
+import DashboardMobileMenuWrapper from "@/components/DashboardMobileNavbar/DashboardMobileMenuWrapper";
+import Hamburger from "./Hamburger";
 
 export const metadata: Metadata = {
   title: "GenieGem",
@@ -38,20 +39,20 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <div className="flex min-h-screen max-w-[1728px] overflow-hidden ">
-            <button className="absolute top-1 left-1 md:hidden z-[500]">
-              <GiHamburgerMenu size={40} className="text-primary" />
-            </button>
-            <div className="w-full max-w-[300px] hidden lg:block">
-              <SideNav />
+          <DashboardMobileMenuWrapper>
+            <div className="flex min-h-screen max-w-[1728px] overflow-hidden ">
+              <Hamburger />
+              <div className="w-full max-w-[300px] hidden lg:block">
+                <SideNav />
+              </div>
+
+              <div className=" w-full lg:w-4/5 p-5">{children}</div>
+              {/* <LoadingIndicator /> */}
+              <NextTopLoader color="#E4A951" />
+
+              <Toaster />
             </div>
-
-            <div className=" w-full lg:w-4/5 p-5">{children}</div>
-            {/* <LoadingIndicator /> */}
-            <NextTopLoader color="#E4A951" />
-
-            <Toaster />
-          </div>
+          </DashboardMobileMenuWrapper>
         </Providers>
       </body>
     </html>

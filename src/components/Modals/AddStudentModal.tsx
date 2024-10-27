@@ -57,7 +57,7 @@ function AddStudentModal({ initialData, edit }: Props) {
         !edit ? (
           <Button>Add a Student</Button>
         ) : (
-          <Button variant={"secondary"}>Edit Student Details</Button>
+          <Button variant={"outline"}>Edit Student Details</Button>
         )
       }
       body={
