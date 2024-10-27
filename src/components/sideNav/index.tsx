@@ -25,7 +25,7 @@ const NavItem = ({ icon, label, url }: NavItemProps) => (
         borderWidth: "2px",
       }}>
       {icon}
-      <p> {label}</p>
+      <p className="text-base"> {label}</p>
     </motion.div>
   </Link>
 );
@@ -42,11 +42,11 @@ const navItems = [
     label: "Students",
     url: "/students",
   },
-  {
-    icon: <GiTeacher className="text-primary" />,
-    label: "Teachers",
-    url: "/teachers",
-  },
+  // {
+  //   icon: <GiTeacher className="text-primary" />,
+  //   label: "Teachers",
+  //   url: "/teachers",
+  // },
   {
     icon: <MdOutlineAccountCircle className="text-primary" />,
     label: "Account",
@@ -62,7 +62,7 @@ const navItems = [
 const SideNav = () => {
   return (
     <div
-      className={`flex flex-col items-center gap-4 h-screen sticky top-0 ease-in-out duration-[1000ms]  bg-yellow-50 z-[99] px-5 py-5`}>
+      className={`flex flex-col items-center gap-4 h-screen sticky top-0 ease-in-out duration-[1000ms]  bg-yellow-50 px-5 py-5`}>
       <Link href="/" className="w-full  text-2xl font-semibold text-primary">
         Genie Gem
       </Link>

@@ -13,6 +13,19 @@ export const fetchStudentById = async (id: number): Promise<Student> => {
   return response.json();
 };
 
+export interface StudentFeesResponse {
+  student_name: string 
+  class: string 
+  totalFee: number 
+  totalPaid: number
+  remainingBalance : number
+
+}
+export const fetchStudentFeesData = async (id: number): Promise<StudentFeesResponse> => {
+  const response = await fetch(`${url}students/${id}/fees`);
+  return response.json();
+};
+
 // Create a new student (Create)
 
 export type AddStudentBody = Omit<Student, "id">;

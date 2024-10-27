@@ -35,7 +35,6 @@ function AddStudentModal({ initialData, edit }: Props) {
     }
   }, [initialData, reset]);
 
-
   const onSubmit = async (data: AddStudentBody) => {
     try {
       toast({
@@ -74,9 +73,10 @@ function AddStudentModal({ initialData, edit }: Props) {
                 className="w-full flex flex-col gap-5">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full">
                   <div className="flex flex-col gap-5">
-                    <Input {...register("name")} label="Name" />
+                    <Input {...register("name")} label="Name" required/>
                     <Input {...register("age")} type="number" label="Age" />
                     <Input
+                      required
                       {...register("dateOfBirth")}
                       label="Date of Birth"
                       type="date"

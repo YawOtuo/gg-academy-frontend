@@ -9,8 +9,10 @@ import Link from "next/link";
 
 import RecentlyRegisteredStudents from "./components/RecentlyRegisteredStudents";
 import Welcome from "./components/Welcome";
+import useStudents from "@/lib/hooks/student";
 
 export default function Home() {
+  const {students} = useStudents()
   return (
     <div className="w-full py-5 px-5">
       <Navbar />
@@ -19,9 +21,9 @@ export default function Home() {
 
       <div className="w-full flex flex-col md:flex-row flex-wrap pt-5 gap-5 mt-5  items-start">
         <Link href={"/students"} className="w-full md:w-fit">
-          <CountCard title="Students" count={40} />
+          <CountCard title="Students" count={students?.length ?? 0} />
         </Link>
-        <CountCard title="Teachers" count={40} />
+        {/* <CountCard title="Teachers" count={40} /> */}
       </div>
       <RecentlyRegisteredStudents />
     </div>

@@ -6,10 +6,11 @@ import { Open_Sans } from "next/font/google";
 import "swiper/css/bundle";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Providers from "@/lib/utils/provider";
-import LoadingIndicator from "@/components/LoadingIndicator";
 import { Toaster } from "@/components/ui/toaster";
 // import { useState } from "react";
 const inter = Open_Sans({ subsets: ["latin"] });
+import NextTopLoader from "nextjs-toploader";
+
 
 export const metadata: Metadata = {
   title: "GenieGem",
@@ -47,6 +48,7 @@ export default function RootLayout({
 
             <div className=" w-full lg:w-4/5">{children}</div>
             {/* <LoadingIndicator /> */}
+            <NextTopLoader color="#E4A951" />
 
             <Toaster />
           </div>
