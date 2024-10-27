@@ -2,7 +2,7 @@ import OptimizedImage from "@/components/ui/OptimizedImage";
 import { useParams } from "next/navigation";
 import { BsArrowRightCircle, BsArrowRightCircleFill } from "react-icons/bs";
 import { Button } from "@/components/ui/button";
-import { useGetStudent } from "@/lib/hooks/student";
+import { useGetStudent } from "@/lib/hooks/useStudent";
 import AddStudentModal from "@/components/Modals/AddStudentModal";
 
 const MainDetails = () => {

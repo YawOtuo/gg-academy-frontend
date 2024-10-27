@@ -1,4 +1,4 @@
-import { useGetStudent } from "@/lib/hooks/student";
+import { useGetStudent } from "@/lib/hooks/useStudent";
 import { useParams } from "next/navigation";
 
 type InfoProps = {
@@ -7,8 +7,9 @@ type InfoProps = {
 };
 const Info = ({ label, value }: InfoProps) => {
   return (
-    <div className="px-5 py-1 w-full capitalize border-2 rounded-md">
-      {label}: {value}
+    <div className="px-5 py-1 w-full capitalize  rounded-md">
+      <span className="text-slate-600"> {label}: </span>
+      {value}
     </div>
   );
 };

@@ -46,7 +46,7 @@ export default function RootLayout({
               <SideNav />
             </div>
 
-            <div className=" w-full lg:w-4/5">{children}</div>
+            <div className=" w-full lg:w-4/5 p-5">{children}</div>
             {/* <LoadingIndicator /> */}
             <NextTopLoader color="#E4A951" />
 

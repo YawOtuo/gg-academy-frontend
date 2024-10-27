@@ -1,7 +1,7 @@
 import FetchingState from "@/components/FetchingState";
 import StudentCard from "@/components/StudentCard";
 import SkeletonStudentCard from "@/components/StudentCard/SkeletonStudentCard";
-import useStudents from "@/lib/hooks/student";
+import useStudents from "@/lib/hooks/useStudent";
 
 function RecentlyRegisteredStudents() {
   const { students, studentsLoading } = useStudents();

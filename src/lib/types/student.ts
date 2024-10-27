@@ -1,3 +1,5 @@
+import { Class } from "./class"
+
 type StudentLevels = "Primary2" | "Primary3"
 
 export interface Student { 
@@ -11,5 +13,5 @@ export interface Student {
     nationality: string 
     contactInformation : string 
     address : string
-    level : StudentLevels
+    class : Class
 }

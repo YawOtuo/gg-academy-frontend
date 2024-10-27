@@ -6,7 +6,7 @@ import { styled } from "@stitches/react";
 import Link from "next/link";
 
 import FilterNav from "../components/filternav";
-import useStudents from "@/lib/hooks/student";
+import useStudents from "@/lib/hooks/useStudent";
 import FetchingState from "@/components/FetchingState";
 import SkeletonStudentListCard from "@/components/StudentListCard/SkeleteonStudentListCard";
 
@@ -14,7 +14,7 @@ const Page = () => {
   const { students, studentsLoading, studentsError } = useStudents();
 
   return (
-    <div className="py-10 flex flex-col justify-center items-center px-5 gap-5">
+    <div className="flex flex-col justify-center items-center gap-5">
    
       <div className="w-full flex justify-center">
         <FilterNav />

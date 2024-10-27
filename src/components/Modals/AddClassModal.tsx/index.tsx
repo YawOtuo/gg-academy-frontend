@@ -1,22 +1,25 @@
 import { Student } from "@/lib/types/student";
-import { Button } from "../ui/button";
-import CustomDialog from "../ui/CustomModal";
-import { Input } from "../ui/input";
 import { FormProvider, useForm } from "react-hook-form";
 import useStudents from "@/lib/hooks/useStudent";
 import { AddStudentBody } from "@/lib/api/students";
 import { useEffect, useState } from "react";
 import { toast } from "@/hooks/use-toast";
+import { CreateClassBody } from "@/lib/api/class";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import CustomDialog from "@/components/ui/CustomModal";
+import useClass from "@/lib/hooks/useClass";
 
 type Props = {
-  initialData?: AddStudentBody;
+  classId?: number;
+  initialData?: CreateClassBody;
   edit?: boolean;
 };
 
-function AddStudentModal({ initialData, edit }: Props) {
-  const { addStudent } = useStudents();
+function AddClassModal({ initialData, edit, classId }: Props) {
+  const { addClass, updateClassById } = useClass();
   const [open, setOpen] = useState(false);
-  const methods = useForm<AddStudentBody>({
+  const methods = useForm<CreateClassBody>({
     defaultValues: {
       ...initialData,
     },
@@ -35,12 +38,14 @@ function AddStudentModal({ initialData, edit }: Props) {
     }
   }, [initialData, reset]);
 
-  const onSubmit = async (data: AddStudentBody) => {
+  const onSubmit = async (data: CreateClassBody) => {
     try {
-      toast({
-        title: "Submitting",
-      });
-      await addStudent(data);
+      if (edit) {
+        await updateClassById(Number(classId), data);
+      } else {
+        await addClass(data);
+
+      }
 
       setOpen(false);
     } catch (error) {
@@ -52,10 +57,10 @@ function AddStudentModal({ initialData, edit }: Props) {
     <CustomDialog
       open={open}
       setOpen={setOpen}
-      size={"7xl"}
+      size={"xl"}
       trigger={
         !edit ? (
-          <Button>Add a Student</Button>
+          <Button>Create a new class</Button>
         ) : (
           <Button variant={"secondary"}>Edit Student Details</Button>
         )
@@ -71,26 +76,10 @@ function AddStudentModal({ initialData, edit }: Props) {
               <form
                 onSubmit={handleSubmit(onSubmit)} // Use the onSubmit function here
                 className="w-full flex flex-col gap-5">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full">
+                <div className="flex flex-col gap-5 w-full">
                   <div className="flex flex-col gap-5">
-                    <Input {...register("name")} label="Name" required/>
-                    <Input {...register("age")} type="number" label="Age" />
-                    <Input
-                      required
-                      {...register("dateOfBirth")}
-                      label="Date of Birth"
-                      type="date"
-                    />
-                    <Input {...register("email")} type="email" label="Email" />
-                  </div>
-                  <div className="flex flex-col gap-5">
-                    <Input {...register("gender")} label="gender" />{" "}
-                    <Input {...register("nationality")} label="nationality" />
-                    <Input
-                      {...register("contactInformation")}
-                      label="contact Information"
-                    />
-                    <Input {...register("address")} label="address" />
+                    <Input {...register("name")} label="Name" required />
+                    <Input {...register("feeAmount")} label="Fee" required />
                   </div>
                 </div>
                 <div className="flex justify-end w-full">
@@ -110,4 +99,4 @@ function AddStudentModal({ initialData, edit }: Props) {
   );
 }
 
-export default AddStudentModal;
+export default AddClassModal;

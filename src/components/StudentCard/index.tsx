@@ -17,31 +17,34 @@ const StudentCard = ({ student }: Props) => {
   return (
     <motion.div
       layout
-      className="grid grid-cols-6 items-center gap-5 shadow-sm border-2 rounded-lg w-full">
-      {student.image ? (
-        <OptimizedImage
-          src={student.image}
-          className="col-span-2 aspect-[4/3] w-full h-full "
-          variant="cover"
-          alt="Student image"
-        />
-      ) : (
-        <Skeleton className="col-span-2 w-full h-full" />
-      )}
-      <div className="col-span-4 items-start gap-1 flex flex-col justify-between w-full h-full capitalize py-3">
-        <div className="text-base ">
-          {" "}
-          <h4>{student.name}</h4>
-          <p className="text-sm">{student.age}</p>
-          <p className="text-sm">{student.dateOfBirth}</p>
+      className="grid grid-cols-6 gap-4 shadow-md border rounded-lg w-full overflow-hidden bg-white">
+      
+      {/* Student Image or Skeleton */}
+      <div className="col-span-2 relative h-full w-full">
+        {student.image ? (
+          <OptimizedImage
+            src={student.image}
+            className="w-full h-full object-cover rounded-l-lg"
+            alt="Student image"
+          />
+        ) : (
+          <Skeleton className="w-full h-full rounded-l-lg" />
+        )}
+      </div>
+
+      {/* Student Details */}
+      <div className="col-span-4 p-4 flex flex-col justify-between h-full">
+        <div className="flex flex-col space-y-1">
+          <h4 className="text-lg font-semibold text-gray-800 capitalize">{student.name}</h4>
+          <p className="text-sm text-gray-600">Age: {student.age}</p>
         </div>
-        <div className="flex justify-end w-full px-5">
+
+        {/* View Button */}
+        <div className="mt-4 flex justify-end">
           <Link href={`/students/${student.id}`}>
-            <Button
-              variant={"link"}
-              className="text-xs flex items-center gap-3">
+            <Button variant="link" className="text-sm flex items-center gap-2 text-primary">
               View
-              <MdArrowRightAlt className="text-primary text-2xl" />
+              <MdArrowRightAlt className="text-xl" />
             </Button>
           </Link>
         </div>

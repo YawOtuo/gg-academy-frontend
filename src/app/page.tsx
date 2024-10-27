@@ -9,12 +9,12 @@ import Link from "next/link";
 
 import RecentlyRegisteredStudents from "./components/RecentlyRegisteredStudents";
 import Welcome from "./components/Welcome";
-import useStudents from "@/lib/hooks/student";
+import useStudents from "@/lib/hooks/useStudent";
 
 export default function Home() {
   const {students} = useStudents()
   return (
-    <div className="w-full py-5 px-5">
+    <div className="w-full">
       <Navbar />
 
       <Welcome />
