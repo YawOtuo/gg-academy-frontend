@@ -25,7 +25,7 @@ export const MobileMenuDetails = (props: any) => {
       <div className=" grid grid-cols-2 gap-5">
         {navItems?.map((link: any, index: number) => (
           <Link
-            href={`${link.link}`}
+            href={`${link.url}`}
             key={index}
             className="border-2 rounded-lg border-white text-white px-4 py-7 flex flex-col gap-2 items-center"
             onClick={() => setDashboardMobileMenu(false)}>
