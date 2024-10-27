@@ -21,7 +21,7 @@ const tabs = [
   //   label: "Profile",
   //   content: "Update your profile information here.",
   // },
-];
+]
 
 const Page = () => {
   return (
