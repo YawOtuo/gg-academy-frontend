@@ -42,7 +42,6 @@ export default function RootLayout({
           <DashboardMobileMenuWrapper>
             <div className="grid grid-cols-10 ">
               <div className="hidden lg:block col-span-2">
-                <Hamburger />
 
                 <SideNav />
               </div>
