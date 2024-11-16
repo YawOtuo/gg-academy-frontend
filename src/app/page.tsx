@@ -21,7 +21,7 @@ export default function Home() {
 
       <Welcome />
 
-      <div className="flex flex-col md:flex-row gap-3 items-start">
+      <div className="flex gap-3 items-start">
         <Link href={"/students"} className="w-full md:w-fit">
           <CountCard title="Students" count={students?.length ?? 0} />
         </Link>

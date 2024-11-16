@@ -16,7 +16,7 @@ const StudentCard = ({ student }: Props) => {
   return (
     <motion.div
       layout
-      className="grid grid-cols-1 lg:grid-cols-5 items-center justify-center gap-4  border rounded-lg w-full overflow-hidden bg-white px-5 py-1 hover:bg-primary-200 transition-all cursor-pointer hover:shadow-lg hover:scale-[1.01]">
+      className="grid grid-cols-1 lg:grid-cols-5 items-center justify-center gap-1 md:gap-4  border rounded-lg w-full overflow-hidden bg-white px-5 py-1 hover:bg-primary-200 transition-all cursor-pointer hover:shadow-lg hover:scale-[1.01]">
       {/* Student Image or Skeleton */}
       <div className="flex items-center justify-start gap-5 w-full col-span-2">
         <div className=" relative w-12 rounded-full aspect-square ">
@@ -38,7 +38,7 @@ const StudentCard = ({ student }: Props) => {
 
       <p className=" text-xs capitalize">{student.class?.name}</p>
       <p className=" text-xs capitalize">{student?.age} years</p>
-      <div className="mt-4 flex justify-end items-center">
+      <div className="mt-4 flex justify start md:justify-end items-center">
         <Link href={`/students/${student.id}`}>
           <Button
             variant="link"

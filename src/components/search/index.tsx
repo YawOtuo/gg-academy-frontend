@@ -23,16 +23,18 @@ const Search = () => {
           <AiOutlineSearch className="text-primary text-xl" />
         </div>
       </div>
-      <FetchingState
-        className="flex flex-col gap-5"
-        isLoading={isLoading}
-        isError={false}
-        success={students?.map((r) => (
-          <StudentCard key={r.id} student={r} />
-        ))}
-        loading={<SkeletonStudentCard />}
-        skeletonCount={5}
-      />
+      {query && (
+        <FetchingState
+          className="flex flex-col gap-5"
+          isLoading={isLoading}
+          isError={false}
+          success={students?.map((r) => (
+            <StudentCard key={r.id} student={r} />
+          ))}
+          loading={<SkeletonStudentCard />}
+          skeletonCount={5}
+        />
+      )}
     </div>
   );
 };
