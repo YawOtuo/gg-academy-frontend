@@ -5,9 +5,23 @@ import {
   deleteStudent,
   fetchStudents,
   fetchStudentById,
+  searchStudents,
 } from "@/lib/api/students"; // Import your CRUD API functions
 import { useToast } from "@/hooks/use-toast";
 import { Student } from "../types/student";
+
+
+export function useSearchStudents(query: string) {
+  return useQuery({
+    queryKey: ["search-students", query],
+    queryFn: () => searchStudents(query),
+    enabled: !!query, // Only fetch when there's a valid query
+  });
+
+}
+
+
+
 
 export function useGetStudent(id: number) {
   return useQuery({
@@ -108,6 +122,8 @@ function useStudents() {
       console.error(error);
     }
   };
+
+
 
   return {
     students,

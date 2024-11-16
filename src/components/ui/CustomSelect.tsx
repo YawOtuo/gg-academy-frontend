@@ -47,9 +47,9 @@ const CustomSelect = <T extends { [key: string]: any }>({
       {label && <p className="text-sm whitespace-nowrap">{label}</p>}
       <Select onValueChange={handleValueChange}>
         <SelectTrigger className={`${className} w-full`}>
-          <p>
+          <p className="text-base"> 
             {selectedValue
-              ? data.find(item => item[valueField] === selectedValue)?.[labelField] ?? placeholder
+              ? data.find(item => item[valueField] == selectedValue)?.[labelField] ?? placeholder
               : placeholder}
           </p>
         </SelectTrigger>

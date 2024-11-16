@@ -8,6 +8,15 @@ export const fetchAllFees = async (): Promise<FeePayment[]> => {
   return response.json();
 };
 
+export type FeePaymentType = "all" |"paid" | "unpaid" | "partial";
+export const fetchAllFeesForClass = async (
+  classId: number,
+  query: FeePaymentType
+): Promise<FeePayment[]> => {
+  const response = await fetch(`${url}fees/class/${classId}?status=${query}`);
+  return response.json();
+};
+
 // Fetch a specific fee payment by ID
 export const fetchFeeById = async (id: number): Promise<FeePayment> => {
   const response = await fetch(`${url}fees/${id}`);
@@ -15,10 +24,10 @@ export const fetchFeeById = async (id: number): Promise<FeePayment> => {
 };
 
 export const fetchFeesByStudent = async (id: number): Promise<FeePayment[]> => {
-    const response = await fetch(`${url}fees/students/${id}`);
-    return response.json();
-  };
-  
+  const response = await fetch(`${url}fees/students/${id}`);
+  return response.json();
+};
+
 export interface CreateFeeBody {
   studentId: number;
   amountPaid: number;
@@ -41,10 +50,10 @@ export const createFeePayment = async (
 };
 
 export interface UpdateFeeBody {
-    amountPaid: number;
-    paymentDate: string;
-    paymentMethod: string;
-  }
+  amountPaid: number;
+  paymentDate: string;
+  paymentMethod: string;
+}
 // Update a fee payment by ID
 export const updateFeePayment = async (
   id: number,

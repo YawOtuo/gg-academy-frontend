@@ -40,13 +40,15 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <DashboardMobileMenuWrapper>
-            <div className="flex min-h-screen max-w-[1728px] overflow-hidden ">
-              <Hamburger />
-              <div className="w-full max-w-[300px] hidden lg:block">
+            <div className="grid grid-cols-10 ">
+              <div className="hidden lg:block col-span-2">
+                <Hamburger />
+
                 <SideNav />
               </div>
-
-              <div className=" w-full lg:w-4/5 p-5">{children}</div>
+              <div className="flex flex-col w-full col-span-10 lg:col-span-8 p-5">
+                {children}
+              </div>
               {/* <LoadingIndicator /> */}
               <NextTopLoader color="#E4A951" />
 

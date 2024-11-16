@@ -34,6 +34,7 @@ export const createClass = async (
 };
 
 export interface UpdateClassBody {
+  id: number
   name: string;
   feeAmount: number;
 }

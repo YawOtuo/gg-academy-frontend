@@ -4,11 +4,13 @@ import CustomDialog from "../../ui/CustomModal";
 import CreateFeePaymentForm from "./AddFeePaymentForm";
 
 type Props = {
-  id: number;
+  studentId?: number;
   edit?: boolean;
+  selectStudent?: boolean;
+  classId?: number;
 };
 
-function AddFeePaymentModal({ id, edit }: Props) {
+function AddFeePaymentModal({ studentId, edit, selectStudent, classId }: Props) {
   const { open, setOpen } = useDisclosure();
   return (
     <CustomDialog
@@ -17,7 +19,13 @@ function AddFeePaymentModal({ id, edit }: Props) {
       trigger={<Button>Add Fee Payment</Button>}
       body={
         <div>
-          <CreateFeePaymentForm edit={edit} setOpen={setOpen} studentId={id} />
+          <CreateFeePaymentForm
+            classId={classId}
+            edit={edit}
+            selectStudent={selectStudent}
+            setOpen={setOpen}
+            studentId={studentId}
+          />
         </div>
       }
     />

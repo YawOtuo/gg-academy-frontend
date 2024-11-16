@@ -14,9 +14,9 @@ export default function Fees({ id }: Props) {
   const { data, isLoading, isError } = useGetFeeByStudent(id);
   return (
     <div className="flex flex-col gap-5 lg:gap-10 items-start">
-      <AddFeePaymentModal id={id} />
+      <AddFeePaymentModal studentId={id} />
       <FetchingState
-        className="w-full grid grid-cols-1 lg:grid-cols-3 gap-5  "
+        className="w-full flex flex-col gap-5  "
         skeletonCount={5}
         isError={isError}
         isLoading={isLoading}

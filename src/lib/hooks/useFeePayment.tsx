@@ -8,6 +8,8 @@ import {
   CreateFeeBody,
   UpdateFeeBody,
   fetchFeesByStudent,
+  FeePaymentType,
+  fetchAllFeesForClass,
 } from "@/lib/api/fees"; // Import your CRUD API functions for fee payments
 import { useToast } from "@/hooks/use-toast";
 import { FeePayment } from "../types/fees";
@@ -21,12 +23,20 @@ export function useGetFeePayment(id: number) {
 }
 
 export function useGetFeeByStudent(id: number) {
-    return useQuery({
-      queryKey: ["fees-student", id],
-      queryFn: () => fetchFeesByStudent(id),
-      enabled: !!id, // Only fetch when there's a valid id
-    });
-  }
+  return useQuery({
+    queryKey: ["fees-student", id],
+    queryFn: () => fetchFeesByStudent(id),
+    enabled: !!id, // Only fetch when there's a valid id
+  });
+}
+
+export function useGetFeeForClass(query: FeePaymentType, id: number) {
+  return useQuery({
+    queryKey: [`fees-class-${query}`, id],
+    queryFn: () => fetchAllFeesForClass(id, query),
+    enabled: !!id, // Only fetch when there's a valid id
+  });
+}
 
 function useFeePayment() {
   const queryClient = useQueryClient();
@@ -54,6 +64,8 @@ function useFeePayment() {
         variant: "default",
       });
       queryClient.invalidateQueries({ queryKey: ["fees"] });
+      // queryClient.invalidateQueries({ queryKey: ["fees-student", id] });
+
     },
   });
 
@@ -82,12 +94,14 @@ function useFeePayment() {
     mutationFn: async (id: number) => {
       return await deleteFeePayment(id);
     },
-    onSuccess: () => {
+    onSuccess: (data, id) => {
       toast({
         title: `Fee payment has been removed successfully`,
         variant: "default",
       });
       queryClient.invalidateQueries({ queryKey: ["fees"] });
+      queryClient.invalidateQueries({ queryKey: ["fees-student", id] });
+
     },
   });
 

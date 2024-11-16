@@ -21,7 +21,11 @@ export function useFetchStudentsInClass(classId: number) {
   const { toast } = useToast();
 
   // Fetch students in the specified class
-  const { data: students, isLoading, error } = useQuery({
+  const {
+    data: students,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["classStudents", classId],
     queryFn: () => fetchStudentsInClass(classId),
     enabled: !!classId, // Only fetch when there's a valid classId
@@ -29,7 +33,8 @@ export function useFetchStudentsInClass(classId: number) {
 
   // Mutation to add a student to the specified class
   const addStudentMutation = useMutation({
-    mutationFn: async (studentId: number) => await addStudentToClass(classId, studentId),
+    mutationFn: async (studentId: number) =>
+      await addStudentToClass(classId, studentId),
     onSuccess: () => {
       toast({
         title: `Student has been added to the class successfully`,
@@ -83,21 +88,51 @@ function useClass() {
 
   // Add a class
   const addClassMutation = useMutation({
-    mutationFn: async (classData: CreateClassBody) => await createClass(classData),
+    mutationFn: async (classData: CreateClassBody) =>
+      await createClass(classData),
     onSuccess: (data) => {
-      toast({ title: `${data?.name} has been added successfully`, variant: "default" });
+      toast({
+        title: `${data?.name} has been added successfully`,
+        variant: "default",
+      });
       queryClient.invalidateQueries(["classes"]);
     },
   });
 
   // Update a class
   const updateClassMutation = useMutation({
-    mutationFn: async ({ id, classData }: { id: number; classData: UpdateClassBody }) => {
+    mutationFn: async ({
+      id,
+      classData,
+    }: {
+      id: number;
+      classData: UpdateClassBody;
+    }) => {
       return await updateClass(id, classData);
     },
     onSuccess: (data) => {
-      toast({ title: `${data?.name} has been updated successfully`, variant: "default" });
+      toast({
+        title: `${data?.name} has been updated successfully`,
+        variant: "default",
+      });
       queryClient.invalidateQueries(["class", data.id]);
+    },
+  });
+
+  const addStudentToClassMutation = useMutation({
+    mutationFn: async ({
+      classId,
+      studentId,
+    }: {
+      classId: number;
+      studentId: number;
+    }) => await addStudentToClass(classId, studentId),
+    onSuccess: (data, variables) => {
+      toast({
+        title: `${data?.name} has been added successfully to class`,
+        variant: "default",
+      });
+      queryClient.invalidateQueries(["attendanceStudent", variables.studentId]);
     },
   });
 
@@ -105,7 +140,10 @@ function useClass() {
   const deleteClassMutation = useMutation({
     mutationFn: async (id: number) => await deleteClass(id),
     onSuccess: () => {
-      toast({ title: `Class has been removed successfully`, variant: "default" });
+      toast({
+        title: `Class has been removed successfully`,
+        variant: "default",
+      });
       queryClient.invalidateQueries(["classes"]);
     },
   });
@@ -143,6 +181,7 @@ function useClass() {
     useGetClass,
     useFetchStudentsInClass,
     addClass,
+    addStudentToClass: addStudentToClassMutation.mutate,
     updateClassById,
     deleteClassById,
   };

@@ -1,24 +1,34 @@
 import { Button } from "@/components/ui/button";
 import CustomInput from "@/components/ui/CustomInput";
+import CustomSelect from "@/components/ui/CustomSelect";
 import { CreateFeeBody } from "@/lib/api/fees";
+import { useFetchStudentsInClass } from "@/lib/hooks/useClass";
 import useFeePayment from "@/lib/hooks/useFeePayment";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 interface CreateFeePaymentFormProps {
-  studentId: number;
+  studentId?: number;
   defaultValues?: Partial<CreateFeeBody>;
   setOpen: any;
   edit?: boolean;
+  selectStudent?: boolean;
+  classId?: number;
 }
 
 const CreateFeePaymentForm: React.FC<CreateFeePaymentFormProps> = ({
   studentId,
   setOpen,
   defaultValues,
+  selectStudent,
+  classId,
   edit,
 }) => {
   const { addFeePayment, updateFeePaymentById } = useFeePayment();
+  const [selectedStudentId, setSelectedStudentId] = useState<number>(
+    Number(studentId)
+  );
+
   const {
     register,
     handleSubmit,
@@ -32,14 +42,19 @@ const CreateFeePaymentForm: React.FC<CreateFeePaymentFormProps> = ({
   });
 
   const onSubmit = async (data: CreateFeeBody) => {
-    data.studentId = studentId
-    if (edit) {
-      await updateFeePaymentById(studentId, data);
-    } else {
-      await addFeePayment({ ...data, studentId });
-    }
     setOpen(false);
+
+    data.studentId = selectedStudentId;
+    if (edit) {
+      await updateFeePaymentById(Number(studentId), data);
+    } else {
+      await addFeePayment({ ...data, studentId: selectedStudentId });
+    }
   };
+
+  const { students, isLoading, error } = useFetchStudentsInClass(
+    Number(classId)
+  );
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -56,6 +71,17 @@ const CreateFeePaymentForm: React.FC<CreateFeePaymentFormProps> = ({
         {...register("paymentDate", { required: "Payment date is required" })}
         errorText={errors.paymentDate?.message}
       />
+
+      {selectStudent && students && (
+        <CustomSelect
+          data={students}
+          valueField="id"
+          labelField="name"
+          placeholder="Select a student"
+          onChange={(value) => setSelectedStudentId(Number(value))}
+          label="Student"
+        />
+      )}
 
       <CustomInput
         label="Payment Method"

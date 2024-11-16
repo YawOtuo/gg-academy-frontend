@@ -19,7 +19,7 @@ const NavItem = ({ icon, label, url }: NavItemProps) => (
   <Link href={url}>
     <motion.div
       className="flex items-center gap-2 py-2
-    text-base px-3 rounded-md shadow-md hover:bg-primary
+    text-base px-3 rounded-md shadow-sm hover:bg-primary
     hover:text-white group"
     >
    <div className="text-primary group-hover:text-white">   {icon}</div>
@@ -34,7 +34,7 @@ const NavItem = ({ icon, label, url }: NavItemProps) => (
 const SideNav = () => {
   return (
     <div
-      className={`flex flex-col items-center gap-4 h-screen sticky top-0 ease-in-out duration-[1000ms]  bg-yellow-50 px-5 py-5`}>
+      className={` flex-col items-center gap-4  sticky top-0 left-0   bg-yellow-50 px-5 py-5 w-full h-screen  hidden lg:flex z-10`}>
       <Link href="/" className="w-full  text-2xl font-semibold text-primary pb-20">
         Genie Gem
       </Link>

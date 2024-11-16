@@ -5,6 +5,8 @@ import Details from "./components/details";
 import CustomTabs from "@/components/ui/CustomTabs";
 import Fees from "./components/fees";
 import BackButton from "@/components/ui/BackButton";
+import StudentAttendance from "./components/student-attendance";
+import { useGetStudent } from "@/lib/hooks/useStudent";
 
 type Props = {
   params: {
@@ -12,6 +14,7 @@ type Props = {
   };
 };
 const Page = ({ params }: Props) => {
+  const { data: student } = useGetStudent(params?.id);
   const tabs = [
     {
       value: "Details",
@@ -23,11 +26,11 @@ const Page = ({ params }: Props) => {
       label: "Fees",
       content: <Fees id={params.id} />,
     },
-    // {
-    //   value: "profile",
-    //   label: "Profile",
-    //   content: "Update your profile information here.",
-    // },
+    {
+      value: "Attendance",
+      label: "Attendance",
+      content: student ? <StudentAttendance student={student} /> : null,
+    },
   ];
   return (
     <div className="">

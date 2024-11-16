@@ -74,7 +74,7 @@ function AddStudentModal({ initialData, edit }: Props) {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full">
                   <div className="flex flex-col gap-5">
                     <Input {...register("name")} label="Name" required/>
-                    <Input {...register("age")} type="number" label="Age" />
+                    <Input {...register("age")} type="number" label="Age"  required/>
                     <Input
                       required
                       {...register("dateOfBirth")}

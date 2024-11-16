@@ -14,14 +14,15 @@ export const fetchStudentById = async (id: number): Promise<Student> => {
 };
 
 export interface StudentFeesResponse {
-  student_name: string 
-  class: string 
-  totalFee: number 
-  totalPaid: number
-  remainingBalance : number
-
+  student_name: string;
+  class: string;
+  totalFee: number;
+  totalPaid: number;
+  remainingBalance: number;
 }
-export const fetchStudentFeesData = async (id: number): Promise<StudentFeesResponse> => {
+export const fetchStudentFeesData = async (
+  id: number
+): Promise<StudentFeesResponse> => {
   const response = await fetch(`${url}students/${id}/fees`);
   return response.json();
 };
@@ -62,4 +63,14 @@ export const deleteStudent = async (id: number): Promise<void> => {
   await fetch(`${url}students/${id}`, {
     method: "DELETE",
   });
+};
+
+export const searchStudents = async (query: string): Promise<Student[]> => {
+  const response = await fetch(
+    `${url}students/s/search?name=${encodeURIComponent(query)}`
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch students");
+  }
+  return response.json();
 };

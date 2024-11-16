@@ -1,9 +1,9 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { Label } from "./label";
 import { Textarea } from "./textarea"; // Ensure you import your Textarea component
 import FormErrorText from "./FormErrorText";
 import { TextareaProps } from "@/components/ui/textarea"; // Adjust the path as necessary
+import { Label } from "./label";
 
 interface CustomTextAreaProps extends TextareaProps {
   label: string;

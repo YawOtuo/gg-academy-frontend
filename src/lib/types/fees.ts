@@ -6,5 +6,6 @@ export interface FeePayment  {
     amountPaid: number
     paymentDate: number 
     paymentMethod: number 
+    status: string
     remainingBalance: number
 }

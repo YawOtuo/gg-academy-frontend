@@ -7,9 +7,9 @@ import SideNav from "../sideNav";
 
 const Navbar = () => {
   return (
-    <Root className="hidden md:flex justify-between items-center w-full gap-3">
+    <Root className="hidden md:flex justify-between items-start w-full gap-3">
       {/* <h1 className="text-lg text-brand">Dashboard</h1> */}
-     <div className="flex justify-around gap-10 items-center w-full">
+     <div className="flex justify-around gap-10 items-start w-full">
         <Search />
         {/* <IoMdNotifications className="text-primary" size={30} /> */}
         <div className="flex items-center">

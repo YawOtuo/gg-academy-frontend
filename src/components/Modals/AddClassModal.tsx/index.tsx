@@ -4,15 +4,16 @@ import useStudents from "@/lib/hooks/useStudent";
 import { AddStudentBody } from "@/lib/api/students";
 import { useEffect, useState } from "react";
 import { toast } from "@/hooks/use-toast";
-import { CreateClassBody } from "@/lib/api/class";
+import { CreateClassBody, UpdateClassBody } from "@/lib/api/class";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import CustomDialog from "@/components/ui/CustomModal";
 import useClass from "@/lib/hooks/useClass";
+import { Class } from "@/lib/types/class";
 
 type Props = {
   classId?: number;
-  initialData?: CreateClassBody;
+  initialData?: UpdateClassBody;
   edit?: boolean;
 };
 
@@ -39,15 +40,14 @@ function AddClassModal({ initialData, edit, classId }: Props) {
   }, [initialData, reset]);
 
   const onSubmit = async (data: CreateClassBody) => {
+    setOpen(false);
+
     try {
       if (edit) {
-        await updateClassById(Number(classId), data);
+        await updateClassById(Number(initialData?.id), data as UpdateClassBody);
       } else {
         await addClass(data);
-
       }
-
-      setOpen(false);
     } catch (error) {
       console.error("Failed to add student:", error);
     }
@@ -62,13 +62,13 @@ function AddClassModal({ initialData, edit, classId }: Props) {
         !edit ? (
           <Button>Create a new class</Button>
         ) : (
-          <Button variant={"secondary"}>Edit Student Details</Button>
+          <Button variant={"secondary"}>Edit Class Details</Button>
         )
       }
       body={
         <div className="flex flex-col gap-5">
           <div>
-            <h3 className="text-primary font-bold"> New Student</h3>
+            <h3 className="text-primary font-bold"> Class</h3>
           </div>
 
           <div>
@@ -83,11 +83,8 @@ function AddClassModal({ initialData, edit, classId }: Props) {
                   </div>
                 </div>
                 <div className="flex justify-end w-full">
-                  <Button
-                    size={"lg"}
-                    type="submit"
-                    disabled={isSubmitting || !isValid}>
-                    {!edit ? "Create Student" : "Edit Student"}
+                  <Button size={"lg"} type="submit">
+                    {!edit ? "Create Class" : "Edit Class"}
                   </Button>
                 </div>
               </form>
