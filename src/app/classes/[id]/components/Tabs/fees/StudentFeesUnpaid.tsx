@@ -25,7 +25,7 @@ function StudentFeesUnpaid({ classId }: Props) {
       <FetchingState
         className="flex flex-col gap-5"
         success={data?.map((r, index) => (
-          <FeeStatusCard fee={r} />
+          <FeeStatusCard key={index} fee={r} />
         ))}
         loading={<SkeletonFeeStatusCard />}
         skeletonCount={10}
