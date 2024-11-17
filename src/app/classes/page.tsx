@@ -1,6 +1,6 @@
 "use client";
-import ClassCard from "@/components/ClassCard";
-import SkeletonClassCard from "@/components/ClassCard/SkeletonClassCard";
+import ClassCard from "@/components/card/ClassCard";
+import SkeletonClassCard from "@/components/card/ClassCard/SkeletonClassCard";
 import FetchingState from "@/components/FetchingState";
 import AddClassModal from "@/components/Modals/AddClassModal.tsx";
 import useClass from "@/lib/hooks/useClass";

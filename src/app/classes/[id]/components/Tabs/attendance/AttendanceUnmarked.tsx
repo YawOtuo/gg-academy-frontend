@@ -1,4 +1,4 @@
-import AttendanceCard from "@/components/AttendanceCard";
+import AttendanceCard from "@/components/card/AttendanceCard";
 import AttendanceGridTitle from "@/components/AttendanceGridTitle";
 import FetchingState from "@/components/FetchingState";
 import StudentCard from "@/components/StudentCard";
@@ -7,7 +7,7 @@ import { useFetchAttendanceNotMarked } from "@/lib/hooks/useAttendance";
 import { formatDate } from "@/lib/utils/date";
 import Link from "next/link";
 import AttendanceLabel from "./AttendanceLabel";
-import AttendanceUnmarkedCard from "@/components/AttendanceUnmarkedCard";
+import AttendanceUnmarkedCard from "@/components/card/AttendanceUnmarkedCard";
 
 type Props = {
   classId: number;

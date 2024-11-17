@@ -3,9 +3,9 @@ import { Attendance } from "@/lib/types/attendance";
 import { Student } from "@/lib/types/student";
 import { formatDate } from "@/lib/utils/date";
 import { FC } from "react";
-import AddAttendanceModal from "../Modals/AddAttendanceModal";
-import AcceptAttendanceTick from "../AcceptAttendanceTick";
-import MarkAttendanceAsAbsentModal from "../Modals/MarkAttendanceAsAbsentModal";
+import AddAttendanceModal from "../../Modals/AddAttendanceModal";
+import AcceptAttendanceTick from "../../AcceptAttendanceTick";
+import MarkAttendanceAsAbsentModal from "../../Modals/MarkAttendanceAsAbsentModal";
 
 type AttendanceUnmarkedCardProps = {
   student: Student;

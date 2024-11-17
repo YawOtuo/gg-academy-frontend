@@ -1,6 +1,7 @@
 // /api/fees/fetchFees.ts
 import { url } from "../../../weburl";
 import { FeePayment } from "../types/fees";
+import { Student } from "../types/student";
 
 // Fetch all fee payments
 export const fetchAllFees = async (): Promise<FeePayment[]> => {
@@ -8,12 +9,27 @@ export const fetchAllFees = async (): Promise<FeePayment[]> => {
   return response.json();
 };
 
-export type FeePaymentType = "all" |"paid" | "unpaid" | "partial";
+export type FeePaymentType = "all" | "paid" | "unpaid" | "partial";
 export const fetchAllFeesForClass = async (
-  classId: number,
-  query: FeePaymentType
+  classId: number
 ): Promise<FeePayment[]> => {
-  const response = await fetch(`${url}fees/class/${classId}?status=${query}`);
+  const response = await fetch(`${url}fees/class/${classId}`);
+  return response.json();
+};
+
+export interface FeeStatusByClassType {
+  student: Student;
+  totalPaid: number;
+  remainingBalance: number;
+}
+
+export const fetchFeesStatusByClass = async (
+  classId: number,
+  status: FeePaymentType
+): Promise<FeeStatusByClassType[]> => {
+  const response = await fetch(
+    `${url}fees/fees-status/class/${classId}?status=${status}`
+  );
   return response.json();
 };
 

@@ -3,8 +3,8 @@ import { Attendance } from "@/lib/types/attendance";
 import { formatDate } from "@/lib/utils/date";
 import { FC } from "react";
 import { MdEdit } from "react-icons/md";
-import AddAttendanceModal from "../Modals/AddAttendanceModal";
-import DeleteAttendanceModal from "../Modals/DeleteAttendanceModal";
+import AddAttendanceModal from "../../Modals/AddAttendanceModal";
+import DeleteAttendanceModal from "../../Modals/DeleteAttendanceModal";
 
 type AttendanceCardProps = {
   attendance: Attendance;

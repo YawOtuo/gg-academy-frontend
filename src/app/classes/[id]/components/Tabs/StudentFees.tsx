@@ -9,6 +9,7 @@ import AllAttendance from "./attendance/AllAttendance";
 import AllFees from "./fees/AllFees";
 import StudentFeesPaid from "./fees/StudentFeesPaid";
 import StudentFeesUnpaid from "./fees/StudentFeesUnpaid";
+import StudentFeesPaidPartial from "./fees/StudentFeesPaidPartial";
 
 type Props = {
   classId: number;
@@ -29,7 +30,7 @@ function StudentsFees({ classId }: Props) {
     {
       value: "fees-paid-partial",
       label: "Partial",
-      content: <StudentFeesPaid classId={classId} />,
+      content: <StudentFeesPaidPartial classId={classId} />,
     },
     {
       value: "fees-unpaid",

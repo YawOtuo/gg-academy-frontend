@@ -1,4 +1,4 @@
-import AttendanceCard from "@/components/AttendanceCard";
+import AttendanceCard from "@/components/card/AttendanceCard";
 import AttendanceGridTitle from "@/components/AttendanceGridTitle";
 import FetchingState from "@/components/FetchingState";
 import StudentCard from "@/components/StudentCard";

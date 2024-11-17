@@ -10,6 +10,7 @@ import {
   fetchFeesByStudent,
   FeePaymentType,
   fetchAllFeesForClass,
+  fetchFeesStatusByClass,
 } from "@/lib/api/fees"; // Import your CRUD API functions for fee payments
 import { useToast } from "@/hooks/use-toast";
 import { FeePayment } from "../types/fees";
@@ -32,11 +33,20 @@ export function useGetFeeByStudent(id: number) {
 
 export function useGetFeeForClass(query: FeePaymentType, id: number) {
   return useQuery({
-    queryKey: [`fees-class-${query}`, id],
-    queryFn: () => fetchAllFeesForClass(id, query),
+    queryKey: [`fee-payments-class`, id],
+    queryFn: () => fetchAllFeesForClass(id),
     enabled: !!id, // Only fetch when there's a valid id
   });
 }
+
+export function useGetFeesPaidByStudents(classId: number, status: FeePaymentType) {
+  return useQuery({
+    queryKey: ["fees-paid-students", classId, status],
+    queryFn: () => fetchFeesStatusByClass(classId, status),
+    enabled: !!classId, // Only fetch when there's a valid studentId
+  });
+}
+
 
 function useFeePayment() {
   const queryClient = useQueryClient();

@@ -1,5 +1,5 @@
-import AttendanceCard from "@/components/AttendanceCard";
-import SkeletonAttendanceCard from "@/components/AttendanceCard/SkeletonAttendanceCard";
+import AttendanceCard from "@/components/card/AttendanceCard";
+import SkeletonAttendanceCard from "@/components/card/AttendanceCard/SkeletonAttendanceCard";
 import FetchingState from "@/components/FetchingState";
 import AddAttendanceModal from "@/components/Modals/AddAttendanceModal";
 import { useFetchAttendanceForStudent } from "@/lib/hooks/useAttendance";

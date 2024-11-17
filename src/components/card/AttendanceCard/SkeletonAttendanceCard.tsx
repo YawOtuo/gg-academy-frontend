@@ -1,6 +1,6 @@
-import { Skeleton } from "../ui/skeleton";
+import { Skeleton } from "../../ui/skeleton";
 
-function SkeletonClassCard() {
+function SkeletonAttendanceCard() {
     return ( 
         <div className="w-full">
             <Skeleton className="w-full h-5"/>
@@ -8,4 +8,4 @@ function SkeletonClassCard() {
      );
 }
 
-export default SkeletonClassCard;
+export default SkeletonAttendanceCard;
